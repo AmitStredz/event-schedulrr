@@ -28,11 +28,11 @@ export function DraggableEvent({ event, onClick, onDelete }: DraggableEventProps
       {...listeners}
       onClick={onClick}
       className={cn(
-        'text-xs p-1 rounded truncate group cursor-move hover:opacity-100',
-        event.color === 'work' && 'bg-red-300 opacity-90 text-blue-800',
-        event.color === 'personal' && 'bg-green-300 opacity-90 text-green-800',
-        event.color === 'other' && 'bg-blue-300 opacity-90 text-purple-800',
-        event.color === 'default' && 'bg-gray-300 opacity-90 text-gray-800'
+        'text-xs p-1 rounded truncate group cursor-move hover:bg-opacity-100',
+        event.color === 'work' && 'bg-red-300 bg-opacity-80 text-blue-800',
+        event.color === 'personal' && 'bg-green-300 bg-opacity-80 text-green-800',
+        event.color === 'other' && 'bg-blue-300 bg-opacity-80 text-purple-800',
+        event.color === 'default' && 'bg-gray-300 bg-opacity-80 text-gray-800'
       )}
     >
       <div className="flex justify-between items-center">

@@ -28,6 +28,10 @@ export default function CalendarDiv() {
 
   const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
+  // useEffect(() => {
+  //   console.log("filteredEvents: ", filteredEvents);
+  // }, [filteredEvents]);
+
   useEffect(() => {
     if (events.length > 0) {
       localStorage.setItem("calendar-events", JSON.stringify(events));
@@ -150,11 +154,17 @@ export default function CalendarDiv() {
 
     if (targetDayEvents.some((e) => hasTimeConflict(e, updatedEvent))) {
       console.error("Time conflict with existing event on target day");
+      toast.error("Time conflict.", {
+        duration: 4000,
+      });
       return;
     }
 
     setEvents(events.map((e) => (e.id === draggedEvent.id ? updatedEvent : e)));
 
+    toast.success("Event rescheduled  Successfully.", {
+      duration: 4000,
+    });
     console.log("Event rescheduled successfully");
   };
 
@@ -162,14 +172,28 @@ export default function CalendarDiv() {
     <DndContext onDragEnd={handleDragEnd}>
       <div className="p-8 max-w-7xl mx-auto">
         <div className="space-y-4">
-          <CalendarHeader
-            currentDate={currentDate}
-            onPreviousMonth={handlePreviousMonth}
-            onNextMonth={handleNextMonth}
-            searchTerm={searchTerm}
-            onSearchChange={setSearchTerm}
-            events={events}
-          />
+          <div className="relative w-full h-full">
+            <CalendarHeader
+              currentDate={currentDate}
+              onPreviousMonth={handlePreviousMonth}
+              onNextMonth={handleNextMonth}
+              searchTerm={searchTerm}
+              onSearchChange={setSearchTerm}
+              events={events}
+            />
+
+            <div className="absolute right-0 top-10">
+              <SearchResults
+                searchTerm={searchTerm}
+                filteredEvents={filteredEvents}
+                onEventSelect={(event) => {
+                  setSelectedDate(new Date(event.date));
+                  setSelectedEvent(event);
+                  setIsEventDialogOpen(true);
+                }}
+              />
+            </div>
+          </div>
 
           <div className="grid grid-cols-7 gap-px bg-gray-200 rounded-lg overflow-hidden">
             {WEEKDAYS.map((day) => (
@@ -191,16 +215,6 @@ export default function CalendarDiv() {
               />
             ))}
           </div>
-
-          <SearchResults
-            searchTerm={searchTerm}
-            filteredEvents={filteredEvents}
-            onEventSelect={(event) => {
-              setSelectedDate(new Date(event.date));
-              setSelectedEvent(event);
-              setIsEventDialogOpen(true);
-            }}
-          />
         </div>
 
         {isEventDialogOpen && selectedDate && (
