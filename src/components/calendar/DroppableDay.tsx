@@ -42,7 +42,7 @@ export function DroppableDay({
             key={event.id}
             event={event}
             onClick={(e) => onEventClick(e, event)}
-            onDelete={(e) => onEventDelete(e, event.id)}
+            // onDelete={(e) => onEventDelete(e, event.id)}
           />
         ))}
       </div>

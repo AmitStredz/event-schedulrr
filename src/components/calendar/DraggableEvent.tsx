@@ -2,7 +2,6 @@ import { useDraggable } from '@dnd-kit/core';
 import { CSS } from '@dnd-kit/utilities';
 import { cn } from '@/lib/utils';
 import { Event } from '@/types/calendar';
-import { Button } from '@/components/ui/button';
 
 interface DraggableEventProps {
   event: Event;
@@ -10,7 +9,7 @@ interface DraggableEventProps {
   onDelete: (e: React.MouseEvent) => void;
 }
 
-export function DraggableEvent({ event, onClick, onDelete }: DraggableEventProps) {
+export function DraggableEvent({ event, onClick }: DraggableEventProps) {
   const {attributes, listeners, setNodeRef, transform} = useDraggable({
     id: event.id,
     data: event,

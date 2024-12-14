@@ -1,5 +1,5 @@
-import { Plus, X, Edit2, Trash2 } from 'lucide-react';
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
+import { Plus,  Edit2, Trash2 } from 'lucide-react';
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Event, Day } from '@/types/calendar';
@@ -33,7 +33,7 @@ export function DayEventsPanel({
     <Sheet open={open} onOpenChange={onClose}>
       <SheetContent side="right" className="w-[400px] sm:w-[540px]">
         <SheetHeader className="space-y-4">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between mt-5">
             <SheetTitle>
               Events for {selectedDay.date.toLocaleDateString(undefined, {
                 weekday: 'long',
