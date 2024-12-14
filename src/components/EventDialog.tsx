@@ -96,8 +96,8 @@ export function EventDialog({
           </div>
           <Select
             value={color}
-            onValueChange={(value: Event["color"]) => setColor(value)}
-          >
+            onValueChange={(value) => setColor(value as Event["color"])} // Explicit cast
+            >
             <SelectTrigger>
               <SelectValue placeholder="Select color" />
             </SelectTrigger>

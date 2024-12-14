@@ -16,7 +16,7 @@ export function DroppableDay({
   index,
   onDayClick,
   onEventClick,
-  onEventDelete,
+  // onEventDelete,
 }: DroppableDayProps) {
   const {isOver, setNodeRef} = useDroppable({
     id: day.date.toISOString(),

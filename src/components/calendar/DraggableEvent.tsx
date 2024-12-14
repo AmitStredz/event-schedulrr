@@ -6,7 +6,7 @@ import { Event } from '@/types/calendar';
 interface DraggableEventProps {
   event: Event;
   onClick: (e: React.MouseEvent) => void;
-  onDelete: (e: React.MouseEvent) => void;
+  // onDelete: (e: React.MouseEvent) => void;
 }
 
 export function DraggableEvent({ event, onClick }: DraggableEventProps) {
