@@ -1,4 +1,5 @@
 import { Event } from '@/types/calendar';
+import toast from 'react-hot-toast';
 // import { toast } from 'sonner';
 
 export function getEventsForMonth(events: Event[], year: number, month: number): Event[] {
@@ -14,6 +15,9 @@ export function exportMonthEvents(events: Event[], year: number, month: number):
   
   if (monthEvents.length === 0) {
     console.error('No events found for the selected month');
+    toast.error("No events found to export.", {
+      duration: 4000,
+    });
     return;
   }
 

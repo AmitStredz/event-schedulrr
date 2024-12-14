@@ -86,6 +86,7 @@ export default function CalendarDiv() {
     const newEvent = {
       ...eventData,
       id: selectedEvent?.id || Math.random().toString(36).substr(2, 9),
+      date: new Date(eventData.date).toISOString().split("T")[0], // Store as YYYY-MM-DD
     };
 
     // Check for time conflicts
@@ -114,6 +115,7 @@ export default function CalendarDiv() {
         duration: 4000,
       });
     } else {
+      console.log("new date", newEvent.date);
       setEvents([...events, newEvent]);
       console.log("Event created successfully");
       setErrorText("");
