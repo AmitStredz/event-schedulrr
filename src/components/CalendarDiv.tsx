@@ -22,10 +22,15 @@ export default function CalendarDiv() {
   const [searchTerm, setSearchTerm] = useState("");
   const [errorText, setErrorText] = useState("");
   const [selectedEvent, setSelectedEvent] = useState<Event | undefined>();
-  const [events, setEvents] = useState<Event[]>(
-    JSON.parse(localStorage.getItem("calendar-events") || "") || []
-  );
-
+  const [events, setEvents] = useState<Event[]>(() => {
+    const storedEvents = localStorage.getItem("calendar-events");
+    try {
+      return storedEvents ? JSON.parse(storedEvents) : [];
+    } catch (error) {
+      console.error("Error parsing localStorage data:", error);
+      return [];
+    }
+  });
   const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
   // useEffect(() => {
