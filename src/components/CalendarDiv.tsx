@@ -177,7 +177,7 @@ export default function CalendarDiv() {
 
   return (
     <DndContext onDragEnd={handleDragEnd}>
-      <div className="p-8 max-w-7xl mx-auto">
+      <div className="p-3 max-w-7xl mx-auto">
         <div className="space-y-4">
           <div className="relative w-full h-full">
             <CalendarHeader
@@ -206,7 +206,7 @@ export default function CalendarDiv() {
             {WEEKDAYS.map((day) => (
               <div
                 key={day}
-                className="bg-white p-4 text-center font-semibold text-sm"
+                className="bg-white p-3 text-center font-semibold text-sm"
               >
                 {day}
               </div>

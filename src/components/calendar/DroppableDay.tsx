@@ -28,7 +28,7 @@ export function DroppableDay({
       ref={setNodeRef}
       onClick={() => onDayClick(day)}
       className={cn(
-        'bg-white p-4 min-h-[120px] cursor-pointer transition-colors hover:bg-slate-100',
+        'bg-white p-4 min-h-28 cursor-pointer transition-colors hover:bg-slate-100',
         !day.isCurrentMonth && 'text-gray-400',
         day.isToday && 'ring-2 ring-blue-500',
         (index + 1) % 7 === 0 && 'bg-gray-50',
