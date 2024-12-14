@@ -11,8 +11,7 @@ import { DayEventsPanel } from "./calendar/DayEventsPanel";
 import { EventDialog } from "./EventDialog";
 import { SearchResults } from "./calendar/SearchResults";
 import { DroppableDay } from "./calendar/DroppableDay";
-// import { toast } from "sonner";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
 export default function CalendarDiv() {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -92,7 +91,9 @@ export default function CalendarDiv() {
     if (hasConflict) {
       console.error("Time conflict with existing event!");
       setErrorText("Already have a meeting. Select another time frame.");
-      toast("Failed.");
+      toast.error("Time conflict. Try again", {
+        duration: 4000,
+      });
       return;
     }
 
@@ -100,12 +101,16 @@ export default function CalendarDiv() {
       setEvents(events.map((e) => (e.id === selectedEvent.id ? newEvent : e)));
       console.log("Event updated successfully");
       setErrorText("");
-      toast("Success.");
+      toast.success("Event updated Successfully.", {
+        duration: 4000,
+      });
     } else {
       setEvents([...events, newEvent]);
       console.log("Event created successfully");
       setErrorText("");
-      toast("Success.");
+      toast.success("Event added  Successfully.", {
+        duration: 4000,
+      });
     }
     setIsEventDialogOpen(false);
     setIsDayPanelOpen(false);
@@ -117,6 +122,9 @@ export default function CalendarDiv() {
       setEvents(events.filter((event) => event.id !== eventId));
       console.log("Event deleted successfully");
       setIsDayPanelOpen(false);
+      toast.success("Event deleted  Successfully.", {
+        duration: 4000,
+      });
     }
   };
 
