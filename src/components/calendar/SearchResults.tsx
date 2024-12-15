@@ -26,7 +26,7 @@ export function SearchResults({
         {filteredEvents.map((event) => (
           <div
             key={event.id}
-            className={`p-4 bg-white rounded-lg shadow cursor-pointer hover:bg-opacity-100 transition-colors ${
+            className={`p-4 z-50 rounded-lg shadow cursor-pointer hover:bg-opacity-100 transition-colors ${
               event.color === "work"
                 ? "bg-red-300 bg-opacity-80 text-blue-800"
                 : event.color === "personal"

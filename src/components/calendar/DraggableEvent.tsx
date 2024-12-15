@@ -45,7 +45,7 @@ export function DraggableEvent({ event, onClick }: DraggableEventProps) {
           ×
         </Button> */}
       </div>
-      <div className="text-xs opacity-75">
+      <div className="text-xs opacity-75 z-10">
         {event.startTime} - {event.endTime}
       </div>
     </div>

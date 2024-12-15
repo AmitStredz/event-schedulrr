@@ -82,12 +82,29 @@ export default function CalendarDiv() {
     setIsEventDialogOpen(true);
   };
 
+  // const formatDate2 = (dateString: Date): string => {
+  //   const date = new Date(dateString);
+  //   const year = date.getFullYear();
+  //   const month = String(date.getMonth() + 1).padStart(2, "0");
+  //   const day = String(date.getDate()).padStart(2, "0");
+
+  //   return `${year}-${month}-${day}`;
+  // };
+
   const handleSaveEvent = (eventData: Omit<Event, "id">) => {
+    if (!selectedDate) {
+      console.log("No date selected.");
+      return;
+    }
     const newEvent = {
       ...eventData,
       id: selectedEvent?.id || Math.random().toString(36).substr(2, 9),
-      date: new Date(eventData.date).toISOString().split("T")[0], // Store as YYYY-MM-DD
+      date: formatDate(selectedDate), // Store as YYYY-MM-DD
     };
+    console.log("Selected date1: ", selectedDate);
+
+    console.log("new date1 ", newEvent.date);
+    console.log("eventData date ", eventData.date);
 
     // Check for time conflicts
     const dayEvents = events.filter(
@@ -95,6 +112,7 @@ export default function CalendarDiv() {
     );
 
     const hasConflict = dayEvents.some((e) => hasTimeConflict(e, newEvent));
+    console.log("new date2", newEvent.date);
 
     console.log("testing...");
 
@@ -114,8 +132,8 @@ export default function CalendarDiv() {
       toast.success("Event updated Successfully.", {
         duration: 4000,
       });
+      setSelectedEvent(undefined);
     } else {
-      console.log("new date", newEvent.date);
       setEvents([...events, newEvent]);
       console.log("Event created successfully");
       setErrorText("");
@@ -241,8 +259,9 @@ export default function CalendarDiv() {
           onClose={() => setIsDayPanelOpen(false)}
           onAddEvent={() => {
             if (selectedDay) {
-              setSelectedDate(selectedDay.date);
-              setSelectedEvent(undefined);
+              setSelectedDate(selectedDay?.date || new Date());
+              console.log("Selected date1: ", selectedDate);
+
               setIsEventDialogOpen(true);
             }
           }}
