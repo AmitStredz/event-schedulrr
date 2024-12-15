@@ -96,10 +96,10 @@ Install all necessary dependencies using npm or yarn:
 npm install
 # or
 yarn install
-
+```
 3. Run your project
 ```bash
 npm run dev
-
+```
 The app will be available at:
 http://localhost:5173
