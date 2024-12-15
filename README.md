@@ -46,7 +46,7 @@ The **Dynamic Event Calendar Application** is designed to help users organize th
 ---
 
 ## 🌐 **Live Demo**
-Check out the deployed application: [Dynamic Event Calendar App](https://event-schedulrr.vercel.app/)  
+Check out the deployed application: [(https://event-schedulrr.vercel.app/)](https://event-schedulrr.vercel.app/)  
 
 ---
 
