@@ -71,6 +71,7 @@ src/
 ├── utils/           # Utility functions (calendar logic, validations, etc.)
 ├── App.tsx          # Main application entry point
 └── index.tsx        # Application bootstrap
+```
 
 ## 🛠️ **Getting Started**
 
