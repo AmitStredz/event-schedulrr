@@ -41,22 +41,21 @@ The **Dynamic Event Calendar Application** is designed to help users organize th
 ### ✨ **Bonus Features** (Optional)
 - **Drag-and-drop** functionality to reschedule events between days.
 - **Color-coded events** for different categories (e.g., Work, Personal, Others).
-- Export the event list of a month as **JSON** or **CSV**.
+- Export the event list of a month as **JSON**.
 
 ---
 
 ## 🌐 **Live Demo**
-Check out the deployed application: [Dynamic Event Calendar App](#)  
-(*Replace `#` with your deployment link, e.g., https://your-app.vercel.app*)  
+Check out the deployed application: [Dynamic Event Calendar App](https://event-schedulrr.vercel.app/)  
 
 ---
 
 ## 🛠️ **Technologies Used**
-- **Frontend**: React.js with functional components and hooks.
+- **Frontend**: React.js (Vite) with functional components and hooks.
 - **UI Library**: shadcn for component styling.
 - **Styling**: TailwindCSS.
 - **Data Persistence**: localStorage.
-- **Deployment**: Vercel (or another platform).
+- **Deployment**: Vercel.
 
 ---
 
@@ -64,11 +63,12 @@ Check out the deployed application: [Dynamic Event Calendar App](#)
 
 ```plaintext
 src/
-├── components/      # Reusable UI components (calendar, modals, buttons, etc.)
-├── hooks/           # Custom React hooks
-├── pages/           # Main pages of the app
-├── styles/          # Tailwind and shadcn styles
-├── utils/           # Utility functions (calendar logic, validations, etc.)
+├── components/      # Reusable UI components.
+    ├──ui            # Shadcn UI components.
+    └──calendar      # Custom calendar components (CalendarHeader, EventPanels etc.)
+
+├──lib               # Utility functions (calendar logic, export logic).
+├──types             # Specifies event variable types.
 ├── App.tsx          # Main application entry point
 └── index.tsx        # Application bootstrap
 ```
@@ -87,8 +87,12 @@ Ensure you have the following installed on your system:
 1. **Clone the Repository**  
    Clone this repository to your local machine using the following command:
    ```bash
-   git clone https://github.com/your-username/dynamic-event-calendar.git
-   cd dynamic-event-calendar
+   git clone https://github.com/AmitStredz/event-schedulrr.git
+   ```
+   Redirect to the project repo
+   ```bash
+   cd event-schedulrr
+   ```
 
 2. Install Dependencies
 Install all necessary dependencies using npm or yarn:
